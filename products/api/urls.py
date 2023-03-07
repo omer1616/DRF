@@ -1,9 +1,10 @@
 #from rest_framework.urls import  path
 
 from django.urls import path
-from .views import category_list_and_create_api_view
+from .views import product_list_and_create_api_view
 
 
 urlpatterns = [
-    path('category/', category_list_and_create_api_view, name='category')
+    path('category/', product_list_and_create_api_view, name='category'),
+    # path('category/<int:pk>', category_list_and_create_api_view, name='category_detail')
 ]

@@ -2,20 +2,20 @@ from rest_framework import status
 from rest_framework.response import Response
 from rest_framework.decorators import api_view
 
-from products.models import Category
-from products.api.serializers import CategorySerializer
+from products.models import *
+from products.api.serializers import ProductSerializer
 
 
 @api_view(['GET', 'POST'])
-def category_list_and_create_api_view(request):
+def product_list_and_create_api_view(request):
     if request.method == "GET":
-        category = Category.objects.all()
-        serializer = CategorySerializer(category, many=True)
+        products = Product.objects.all()
+        serializer = ProductSerializer(products, many=True)
         return Response(serializer.data)
 
 
     elif request.method == "POST":
-        serializer = CategorySerializer(data=request.data)
+        serializer = ProductSerializer(data=request.data)
         if serializer.is_valid():
             serializer.save()
             return Response(serializer.data, status=status.HTTP_201_CREATED)

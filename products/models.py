@@ -17,7 +17,7 @@ class Category(models.Model):
 
 class Product(models.Model):
     name = models.CharField(max_length=250)
-    category = models.ForeignKey(Category, on_delete=models.CASCADE, related_name="category_product")
+    # category = models.ForeignKey(Category, on_delete=models.CASCADE, related_name="category_product")
     description = models.TextField(max_length=500, blank=True, null=True)
     price = models.FloatField()
     created_date = models.DateTimeField(auto_now_add=True)
